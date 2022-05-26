@@ -1,0 +1,26 @@
+{
+  "name": "resume-contact-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node .",
+    "dev": "node .",
+    "get-site-key": "node get-site-key.js",
+    "deploy": "git push heroku master"
+  },
+  "keywords": [],
+  "author": "Daniele Sabre",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "chalk": "^4.1.2"
+  }
+}
