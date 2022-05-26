@@ -92,7 +92,7 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 				const keyMaxLength = Math.max(...extraDataKeys.map(k => k.length)) + 1;
 				
 				for (let i = 0; i < extraDataKeys.length; i++) {
-					const key = (extraDataKeys[i] + ':').padEnd(keyMaxLength, ' ');
+					const key = (extraDataKeys[i].split('_').join(' ') + ':').padEnd(keyMaxLength, ' ');
 					
 					text.push(`<code>${key} ${extraData[extraDataKeys[i]]}</code>`);
 				}

@@ -10,11 +10,12 @@ const title     = 'Message from "yarn example"';
 const message   = 'Hello!!';
 const extraData = {
 	Name:    'Jhon Doe',
-	Example: 'true'
+	Locale: 'en',
+	Site_theme: 'dark'
 };
 
 axios.post(`http://localhost:${process.env.PORT}/send-message`, {
-	siteKey: 'aaa',
+	siteKey,
 	title,
 	message,
 	extraData
