@@ -44,20 +44,17 @@ yarn start
 ```
 
 
-## Deployment
-
-To deploy this project run
-
-```bash
-  yarn deploy
-```
-
-
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your host server
+To run this project, you will need to add the following environment variables to your host server (inside a .env.local file in project root).
+You can use `yarn set-config` command to interactively create a configuration file.
+
+Example of .env.local file:
 
 ```dotenv
+# Local port for run locally (for development purposes)
+PORT=...
+
 # Telegram bot token
 BOT_TOKEN=...
 

@@ -8,7 +8,6 @@
     "start": "NODE_ENV=production node .",
     "dev": "node .",
     "get-site-key": "node get-site-key.js",
-    "deploy": "git push heroku master",
     "set-config": "node set-config.js"
   },
   "keywords": [],
