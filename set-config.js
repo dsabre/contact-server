@@ -1,4 +1,5 @@
 const chalk           = require('chalk');
+const crypto          = require('crypto');
 const fs              = require('fs');
 const inquirer        = require('inquirer');
 const {execSync}      = require("child_process");
@@ -9,6 +10,11 @@ const envFile         = '.env.local';
 
 require('dotenv').config({path: envFile});
 
+// generate a new crypto key if not already present
+if (typeof process.env.CRYPTO_SECRET === 'undefined' || process.env.CRYPTO_SECRET.trim() === '') {
+	process.env.CRYPTO_SECRET = crypto.randomBytes(16).toString('hex');
+}
+
 console.log(chalk.cyan('\nConfiguration file generation\n'));
 
 inquirer
@@ -18,7 +24,7 @@ inquirer
 	{name: 'CHAT_ID', type: 'input', message: 'Telegram chat id where receive messages:', validate: requiredString, default: process.env.CHAT_ID || ''},
 	{name: 'useCors', type: 'confirm', message: 'Use cors origin of calls (if no, all sites will be accepted):', default: (typeof process.env.CORS_ORIGIN !== 'undefined' ? process.env.CORS_ORIGIN : 'dummy') !== ''},
 	{name: 'CORS_ORIGIN', type: 'input', message: 'Cors origins of calls (if you have multiple values, separate them with commas):', when: answers => answers.useCors, validate: requiredString, default: process.env.CORS_ORIGIN || ''},
-	{name: 'CRYPTO_SECRET', type: 'input', message: 'Secret for keys encryption:', validate: requiredString, default: process.env.CRYPTO_SECRET || ''},
+	{name: 'CRYPTO_SECRET', type: 'input', message: 'Secret for keys encryption:', validate: requiredString, default: process.env.CRYPTO_SECRET},
 	{name: 'useGoogle', type: 'confirm', message: 'Use Google recaptcha to validate requests:', default: (typeof process.env.RECAPTCHA_SECRET !== 'undefined' ? process.env.RECAPTCHA_SECRET : 'dummy') !== ''},
 	{name: 'RECAPTCHA_SECRET', type: 'input', message: 'Google recaptcha secret:', when: answers => answers.useGoogle, validate: requiredString, default: process.env.RECAPTCHA_SECRET || ''},
 ])
