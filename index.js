@@ -74,7 +74,7 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 			'<b>💬 CONTACT REQUEST!</b>',
 			'',
 			`<b>Source:</b> <i>${siteName}</i>`,
-			`<b>Name:</b> ${name}`,
+			name ? `<b>Name:</b> ${name}` : '',
 			'<b>Message:</b>',
 			message
 		];

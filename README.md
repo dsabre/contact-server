@@ -79,13 +79,13 @@ RECAPTCHA_SECRET=...
   POST /send-message
 ```
 
-| Parameter         | Type     | Description                                                    |
-| :---------------- | :------- | :------------------------------------------------------------- |
-| `name`            | `string` | **Required**. The name of person that send the contact request |
-| `message`         | `string` | **Required**. The message writed from the person               |
-| `grecaptchaToken` | `string` | **Required**. Token returned from a Google reCAPTCHA challenge |
-| `siteKey`         | `string` | **Required**. Your encoded site key                            |
-| `extraData`       | `object` | Any extra data you want to send on Telegram message            |
+| Parameter         | Type     | Description                                                                                     |
+|:------------------| :------- |:------------------------------------------------------------------------------------------------|
+| `message`         | `string` | **Required**. The message to send via telegram                                                  |
+| `siteKey`         | `string` | **Required**. Your encoded site key                                                             |
+| `grecaptchaToken` | `string` | **Required if RECAPTCHA_SECRET is not empty**. Token returned from a Google reCAPTCHA challenge |
+| `name`            | `string` | The name of person that send the contact request                                                |
+| `extraData`       | `object` | Any extra data you want to send on Telegram message                                             |
 
 
 ## Usage/Examples
