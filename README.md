@@ -84,6 +84,7 @@ RECAPTCHA_SECRET=...
 | `message`         | `string` | **Required**. The message to send via telegram                                                  |
 | `siteKey`         | `string` | **Required**. Your encoded site key                                                             |
 | `grecaptchaToken` | `string` | **Required if RECAPTCHA_SECRET is not empty**. Token returned from a Google reCAPTCHA challenge |
+| `title`           | `string` | The contact request title, if not provided will be used "CONTACT REQUEST!"                      |
 | `name`            | `string` | The name of person that send the contact request                                                |
 | `extraData`       | `object` | Any extra data you want to send on Telegram message                                             |
 

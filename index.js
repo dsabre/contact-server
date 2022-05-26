@@ -55,7 +55,7 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 		try {
 			siteName = decrypt(siteKey);
 		} catch (err) {
-			res.sendStatus(403);
+			res.sendStatus(401);
 			return;
 		}
 		
@@ -106,8 +106,10 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 		
 		res.sendStatus(telegramResponse.data.ok ? 200 : 500);
 	} catch (err) {
-		res.sendStatus(500);
+	
 	}
+	
+	res.sendStatus(500);
 });
 
 app.listen(port, () => {
