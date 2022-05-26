@@ -133,7 +133,7 @@ yarn get-site-key "SITE NAME"
 
 ## Screenshots
 
-![App Screenshot](https://ds-contact-server.herokuapp.com/telegram_example.png)
+![App Screenshot](/public/telegram_example.png "Example telegram message received")
 
 
 ## Authors
