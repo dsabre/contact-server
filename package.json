@@ -8,7 +8,8 @@
     "start": "NODE_ENV=production node .",
     "dev": "node .",
     "get-site-key": "node get-site-key.js",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "set-config": "node set-config.js"
   },
   "keywords": [],
   "author": "Daniele Sabre",
@@ -18,7 +19,8 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "inquirer": "^8.2.4"
   },
   "devDependencies": {
     "chalk": "^4.1.2"
