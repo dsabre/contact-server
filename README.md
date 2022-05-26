@@ -133,7 +133,7 @@ yarn get-site-key "SITE NAME"
 
 ## Screenshots
 
-![App Screenshot](/public/telegram_example.png "Example telegram message received")
+![App Screenshot](/screenshots/telegram_example.png "Example telegram message received")
 
 
 ## Authors
