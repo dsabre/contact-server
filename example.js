@@ -6,7 +6,7 @@ const {encrypt}    = require("./crypto");
 loadConfig();
 
 const siteKey   = encrypt('Example');
-const title      = 'Message from "yarn example"';
+const title     = 'Message from "yarn example"';
 const name      = 'Jhon Doe';
 const message   = 'Hello!!';
 const extraData = {
@@ -14,7 +14,7 @@ const extraData = {
 };
 
 axios.post(`http://localhost:${process.env.PORT}/send-message`, {
-	siteKey: 'dddd',
+	siteKey,
 	title,
 	name,
 	message,
