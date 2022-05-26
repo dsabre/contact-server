@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production node .",
     "dev": "node .",
-    "get-site-key": "node get-site-key.js",
+    "get-secret-key": "node get-secret-key.js",
     "set-config": "node set-config.js",
     "example": "node example.js"
   },

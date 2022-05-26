@@ -1,11 +1,11 @@
 const axios        = require("axios");
 const chalk        = require('chalk');
 const {loadConfig} = require("./utils");
-const {encrypt}    = require("./crypto");
+const {getSiteKey} = require("./crypto");
 
 loadConfig();
 
-const siteKey   = encrypt(JSON.stringify({key: 'Example', bypassRecaptcha: true}));
+const secretKey = getSiteKey('Example', true);
 const title     = 'Message from "yarn example"';
 const message   = 'Hello!!';
 const extraData = {
@@ -15,7 +15,7 @@ const extraData = {
 };
 
 axios.post(`http://localhost:${process.env.PORT}/send-message`, {
-	siteKey,
+	secretKey,
 	title,
 	message,
 	extraData

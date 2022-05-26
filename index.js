@@ -49,19 +49,19 @@ app.options('/send-message', cors(corsOptionsDelegate));
 app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res) => {
 	try {
 		// get data from body
-		const {siteKey, title, message, grecaptchaToken} = req.body;
-		let {extraData} = req.body;
+		const {secretKey, title, message, grecaptchaToken} = req.body;
+		let {extraData}                                    = req.body;
 		
 		// get site name from request
-		let siteName;
+		let source;
 		let bypassRecaptcha = false;
 		try {
-			const decrypted = JSON.parse(decrypt(siteKey));
+			const decrypted = JSON.parse(decrypt(secretKey));
 			
-			siteName = decrypted.siteName;
+			source          = decrypted.source;
 			bypassRecaptcha = decrypted.bypassRecaptcha;
 		} catch (err) {
-			logger.error(`401 - unauthorized key "${siteKey}"`);
+			logger.error(`401 - unauthorized key "${secretKey}"`);
 			res.sendStatus(401);
 			return;
 		}
@@ -81,7 +81,7 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 		const text = [
 			`<b>💬 ${title || 'CONTACT REQUEST!'}</b>`,
 			'',
-			`<b>Source:</b> <i>${siteName}</i>`,
+			`<b>Source:</b> <i>${source}</i>`,
 			'<b>Message:</b>',
 			message
 		];

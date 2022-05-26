@@ -65,7 +65,7 @@ CHAT_ID=...
 # allowed orgin
 CORS_ORIGIN=...
 
-# secret passprhase for encode and decode sites secret keys (see site secret key generation section for further details)
+# secret passprhase for encode and decode secret keys (see secret key generation section for further details)
 CRYPTO_SECRET=...
 
 # google recaptcha secret, used for server-side request validation
@@ -85,7 +85,7 @@ LOG_ENABLED="true|false"
 | Parameter         | Type     | Description                                                                                     |
 |:------------------| :------- |:------------------------------------------------------------------------------------------------|
 | `message`         | `string` | **Required**. The message to send via telegram                                                  |
-| `siteKey`         | `string` | **Required**. Your encoded site key                                                             |
+| `secretKey`         | `string` | **Required**. Your encoded secret key                                                             |
 | `grecaptchaToken` | `string` | **Required if RECAPTCHA_SECRET is not empty**. Token returned from a Google reCAPTCHA challenge |
 | `title`           | `string` | The contact request title, if not provided will be used "CONTACT REQUEST!"                      |
 | `extraData`       | `object` | Any extra data you want to send on Telegram message                                             |
@@ -113,7 +113,7 @@ const extraData = {
 axios.post(sendMessageUrl, {
     message:         message.trim(),
     grecaptchaToken: 'TOKEN RETURNED FROM A GOOGLE RECAPTCHA CHALLENGE',
-    siteKey:         'YOUR ENCODED SITE KEY',
+    secretKey:       'YOUR ENCODED SECRET KEY',
     extraData:       extraData
 }).then(() => {
     console.log('success');
@@ -122,12 +122,10 @@ axios.post(sendMessageUrl, {
 });
 ```
 
-### Generate a new site key
-
-Note: the site name passed here, will be decoded and embedded in the Telegram message.
+### Generate a new secret key
 
 ```bash
-yarn get-site-key "SITE NAME"
+yarn get-secret-key
 ```
 
 
