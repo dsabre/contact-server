@@ -8,7 +8,8 @@
     "start": "NODE_ENV=production node .",
     "dev": "node .",
     "get-site-key": "node get-site-key.js",
-    "set-config": "node set-config.js"
+    "set-config": "node set-config.js",
+    "example": "node example.js"
   },
   "keywords": [],
   "author": "Daniele Sabre",
