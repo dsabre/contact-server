@@ -106,7 +106,7 @@ const message = 'Hello!!';
 const extraData = {
     Name: 'Jhon Doe',
     Locale: 'en',
-    Theme:  'dark'
+	Site_theme: 'dark' // <-- underscores will be replaced by spaces
 };
 
 // Axios example, but you can use what you want:
