@@ -5,7 +5,7 @@ const {encrypt}    = require("./crypto");
 
 loadConfig();
 
-const siteKey   = encrypt('Example');
+const siteKey   = encrypt(JSON.stringify({key: 'Example', bypassRecaptcha: true}));
 const title     = 'Message from "yarn example"';
 const message   = 'Hello!!';
 const extraData = {

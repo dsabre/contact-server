@@ -38,9 +38,9 @@ inquirer
 	console.log(Buffer.from(execSync(`cat ${envFile}`)).toString());
 	console.log();
 })
-.catch((error) => {
+.catch(error => {
 	if (error.isTtyError) {
-		console.log("Prompt couldn't be rendered in the current environment");
+		console.log(chalk.red("Prompt couldn't be rendered in the current environment"));
 	} else {
 		console.error(error);
 	}

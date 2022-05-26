@@ -49,12 +49,17 @@ app.options('/send-message', cors(corsOptionsDelegate));
 app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res) => {
 	try {
 		// get data from body
-		const {siteKey, title, message, grecaptchaToken, extraData} = req.body;
+		const {siteKey, title, message, grecaptchaToken} = req.body;
+		let {extraData} = req.body;
 		
 		// get site name from request
 		let siteName;
+		let bypassRecaptcha = false;
 		try {
-			siteName = decrypt(siteKey);
+			const decrypted = JSON.parse(decrypt(siteKey));
+			
+			siteName = decrypted.siteName;
+			bypassRecaptcha = decrypted.bypassRecaptcha;
 		} catch (err) {
 			logger.error(`401 - unauthorized key "${siteKey}"`);
 			res.sendStatus(401);
@@ -62,7 +67,7 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 		}
 		
 		// check if grecaptcha is valid if required
-		if (process.env.RECAPTCHA_SECRET !== '') {
+		if (process.env.RECAPTCHA_SECRET !== '' && !bypassRecaptcha) {
 			const grecaptchaVerifyUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + process.env.RECAPTCHA_SECRET + '&response=' + grecaptchaToken;
 			const grecaptchaResponse  = await axios.post(grecaptchaVerifyUrl);
 			if (!(grecaptchaResponse.data.success && grecaptchaResponse.data.action === 'sendMessage')) {
@@ -80,6 +85,14 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 			'<b>Message:</b>',
 			message
 		];
+		
+		if (bypassRecaptcha) {
+			if (!extraData) {
+				extraData = {};
+			}
+			
+			extraData.Bypass_recaptcha = 'true';
+		}
 		
 		// manage extra data
 		if (!!extraData) {
