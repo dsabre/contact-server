@@ -7,16 +7,15 @@ loadConfig();
 
 const siteKey   = encrypt('Example');
 const title     = 'Message from "yarn example"';
-const name      = 'Jhon Doe';
 const message   = 'Hello!!';
 const extraData = {
-	example: 'true'
+	Name:    'Jhon Doe',
+	Example: 'true'
 };
 
 axios.post(`http://localhost:${process.env.PORT}/send-message`, {
 	siteKey,
 	title,
-	name,
 	message,
 	extraData
 })

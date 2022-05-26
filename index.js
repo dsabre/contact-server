@@ -48,7 +48,7 @@ app.options('/send-message', cors(corsOptionsDelegate));
 app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res) => {
 	try {
 		// get data from body
-		const {title, name, message, grecaptchaToken, siteKey, extraData} = req.body;
+		const {siteKey, title, message, grecaptchaToken, extraData} = req.body;
 		
 		// get site name from request
 		let siteName;
@@ -74,7 +74,6 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 			`<b>💬 ${title || 'CONTACT REQUEST!'}</b>`,
 			'',
 			`<b>Source:</b> <i>${siteName}</i>`,
-			name ? `<b>Name:</b> ${name}` : '',
 			'<b>Message:</b>',
 			message
 		];
@@ -105,8 +104,9 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 		});
 		
 		res.sendStatus(telegramResponse.data.ok ? 200 : 500);
+		
+		return;
 	} catch (err) {
-	
 	}
 	
 	res.sendStatus(500);

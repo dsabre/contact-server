@@ -85,7 +85,6 @@ RECAPTCHA_SECRET=...
 | `siteKey`         | `string` | **Required**. Your encoded site key                                                             |
 | `grecaptchaToken` | `string` | **Required if RECAPTCHA_SECRET is not empty**. Token returned from a Google reCAPTCHA challenge |
 | `title`           | `string` | The contact request title, if not provided will be used "CONTACT REQUEST!"                      |
-| `name`            | `string` | The name of person that send the contact request                                                |
 | `extraData`       | `object` | Any extra data you want to send on Telegram message                                             |
 
 
@@ -97,19 +96,18 @@ RECAPTCHA_SECRET=...
 // the contact server url to call, change it to match your requirements
 const sendMessageUrl = 'http://localhost:3000/send-message';
 
-// name and message to send via Telegram, usually this will be passed via form
-const name    = 'Jhon Doe';
+// message to send via Telegram, usually this will be passed via form
 const message = 'Hello!!';
 
 // set here any extra data you want to send on Telegram message, here is an example of what I used for my personal site
 const extraData = {
-    locale: 'en',
-    theme:  'dark'
+    Name: 'Jhon Doe',
+    Locale: 'en',
+    Theme:  'dark'
 };
 
 // Axios example, but you can use what you want:
 axios.post(sendMessageUrl, {
-    name:            name.trim(),
     message:         message.trim(),
     grecaptchaToken: 'TOKEN RETURNED FROM A GOOGLE RECAPTCHA CHALLENGE',
     siteKey:         'YOUR ENCODED SITE KEY',
