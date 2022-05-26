@@ -3,7 +3,7 @@ const crypto          = require('crypto');
 const fs              = require('fs');
 const inquirer        = require('inquirer');
 const {execSync}      = require("child_process");
-const configKeys      = ['PORT', 'BOT_TOKEN', 'CHAT_ID', 'CORS_ORIGIN', 'CRYPTO_SECRET', 'RECAPTCHA_SECRET'];
+const configKeys      = ['PORT', 'BOT_TOKEN', 'CHAT_ID', 'CORS_ORIGIN', 'CRYPTO_SECRET', 'RECAPTCHA_SECRET', 'LOG_ENABLED'];
 const requiredString  = answer => answer.trim() !== '';
 const requiredInteger = answer => /^\d+$/.test(answer);
 const envFile         = '.env.local';
@@ -27,6 +27,7 @@ inquirer
 	{name: 'CRYPTO_SECRET', type: 'input', message: 'Secret for keys encryption:', validate: requiredString, default: process.env.CRYPTO_SECRET},
 	{name: 'useGoogle', type: 'confirm', message: 'Use Google recaptcha to validate requests:', default: (typeof process.env.RECAPTCHA_SECRET !== 'undefined' ? process.env.RECAPTCHA_SECRET : 'dummy') !== ''},
 	{name: 'RECAPTCHA_SECRET', type: 'input', message: 'Google recaptcha secret:', when: answers => answers.useGoogle, validate: requiredString, default: process.env.RECAPTCHA_SECRET || ''},
+	{name: 'LOG_ENABLED', type: 'confirm', message: 'Log enabled:', default: process.env.LOG_ENABLED === 'true'},
 ])
 .then(answers => {
 	const config = [];

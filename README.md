@@ -70,6 +70,9 @@ CRYPTO_SECRET=...
 
 # google recaptcha secret, used for server-side request validation
 RECAPTCHA_SECRET=...
+
+# enable or disable logging
+LOG_ENABLED="true|false"
 ```
 ## API Reference
 

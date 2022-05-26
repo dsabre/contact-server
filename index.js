@@ -6,6 +6,7 @@ const express    = require('express');
 const cors       = require('cors');
 const bodyParser = require('body-parser');
 const {decrypt}  = require('./crypto');
+const logger     = require("./logger");
 const jsonParser = bodyParser.json();
 const app        = express();
 const port       = process.env.PORT;
@@ -55,6 +56,7 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 		try {
 			siteName = decrypt(siteKey);
 		} catch (err) {
+			logger.error(`401 - unauthorized key "${siteKey}"`);
 			res.sendStatus(401);
 			return;
 		}
@@ -64,6 +66,7 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 			const grecaptchaVerifyUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + process.env.RECAPTCHA_SECRET + '&response=' + grecaptchaToken;
 			const grecaptchaResponse  = await axios.post(grecaptchaVerifyUrl);
 			if (!(grecaptchaResponse.data.success && grecaptchaResponse.data.action === 'sendMessage')) {
+				logger.error(`403 - google recaptcha error: ${JSON.stringify(grecaptchaResponse.data)}`);
 				res.sendStatus(403);
 				return;
 			}
@@ -103,18 +106,20 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 			parse_mode: 'html'
 		});
 		
-		res.sendStatus(telegramResponse.data.ok ? 200 : 500);
+		if (telegramResponse.data.ok) {
+			logger.info('Message sended');
+			res.sendStatus(200);
+		} else {
+			logger.error(JSON.stringify(telegramResponse.data));
+			res.sendStatus(500);
+		}
 		
 		return;
 	} catch (err) {
+		logger.error(err.message || 'Error');
 	}
 	
 	res.sendStatus(500);
 });
 
-app.listen(port, () => {
-	if (isDev) {
-		const chalk = require("chalk");
-		console.log(chalk.cyan(`Server listening at http://localhost:${port}`));
-	}
-});
+app.listen(port, () => logger.info(`Server listening on port ${port}`));
