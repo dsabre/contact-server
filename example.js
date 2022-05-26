@@ -9,9 +9,9 @@ const siteKey   = encrypt('Example');
 const title     = 'Message from "yarn example"';
 const message   = 'Hello!!';
 const extraData = {
-	Name:    'Jhon Doe',
-	Locale: 'en',
-	Site_theme: 'dark'
+	Name:       'Jhon Doe',
+	Locale:     'en',
+	Site_theme: 'dark' // <-- underscores will be replaced by spaces
 };
 
 axios.post(`http://localhost:${process.env.PORT}/send-message`, {
