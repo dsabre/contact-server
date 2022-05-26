@@ -28,19 +28,19 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  npm install
+  yarn install
 ```
 
 Start development server
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 Start production server
 
 ```bash
-npm run start
+yarn start
 ```
 
 
@@ -49,7 +49,7 @@ npm run start
 To deploy this project run
 
 ```bash
-  npm run deploy
+  yarn deploy
 ```
 
 
@@ -127,7 +127,7 @@ axios.post(sendMessageUrl, {
 Note: the site name passed here, will be decoded and embedded in the Telegram message.
 
 ```bash
-npm run get-site-key "SITE NAME"
+yarn get-site-key "SITE NAME"
 ```
 
 
