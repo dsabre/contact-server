@@ -28,7 +28,7 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  yarn install
+yarn install
 ```
 
 Start development server
@@ -67,7 +67,7 @@ CHAT_ID=...
 # allowed orgin
 CORS_ORIGIN=...
 
-# secret passprhase for encode and decode of sites secret keys (see site secret key generation section for further details)
+# secret passprhase for encode and decode sites secret keys (see site secret key generation section for further details)
 CRYPTO_SECRET=...
 
 # google recaptcha secret, used for server-side request validation
