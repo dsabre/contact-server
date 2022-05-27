@@ -105,8 +105,8 @@ const message = 'Hello!!';
 // set here any extra data you want to send on Telegram message, here is an example of what I used for my personal site
 const extraData = {
     Name: 'Jhon Doe',
-    Locale: 'en',
-	Site_theme: 'dark' // <-- underscores will be replaced by spaces
+    Locale: 'en', 
+    Site_theme: 'dark' // <-- underscores will be replaced by spaces
 };
 
 // Axios example, but you can use what you want:
