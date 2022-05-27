@@ -14,15 +14,23 @@ const logger       = createLogger({
 	level:  'info',
 	format: rowFormat,
 });
+const loggerKeys   = createLogger({
+	level:  'info',
+	format: rowFormat,
+});
 
 if (isLogEnabled) {
 	logger.add(new File({filename: 'logs/error.log', level: 'error'}));
 	logger.add(new File({filename: 'logs/combined.log'}));
+	loggerKeys.add(new File({filename: 'logs/keys.log'}));
 }
 
 if (process.env.NODE_ENV !== 'production') {
 	// if we're not in production then log to the `console`
 	logger.add(new Console({
+		format: rowFormat
+	}));
+	loggerKeys.add(new Console({
 		format: rowFormat
 	}));
 } else {
@@ -34,4 +42,4 @@ if (process.env.NODE_ENV !== 'production') {
 	}
 }
 
-module.exports = logger;
+module.exports = {logger, loggerKeys};

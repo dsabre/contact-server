@@ -1,6 +1,6 @@
-const chalk        = require('chalk');
-const inquirer                   = require('inquirer');
-const {getSiteKey: getSecretKey} = require("./crypto");
+const chalk          = require('chalk');
+const inquirer       = require('inquirer');
+const {getSecretKey} = require("./crypto");
 
 inquirer
 .prompt([

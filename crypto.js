@@ -1,10 +1,11 @@
 const {loadConfig} = require("./utils");
 loadConfig();
 
-const crypto    = require('crypto');
-const algorithm = 'aes-256-ctr';
-const secretKey = process.env.CRYPTO_SECRET;
-const iv        = crypto.randomBytes(16);
+const crypto       = require('crypto');
+const {loggerKeys} = require("./logger");
+const algorithm    = 'aes-256-ctr';
+const secretKey    = process.env.CRYPTO_SECRET;
+const iv           = crypto.randomBytes(16);
 
 const encrypt = (text) => {
 	const cipher        = crypto.createCipheriv(algorithm, secretKey, iv);
@@ -25,9 +26,15 @@ const decrypt = hash => {
 	return decrpyted.toString();
 };
 
-const getSiteKey = (source, bypassRecaptcha) => encrypt(JSON.stringify({source, bypassRecaptcha}));
+const getSecretKey = (source, bypassRecaptcha) => {
+	const secret = encrypt(JSON.stringify({source, bypassRecaptcha}));
+	
+	loggerKeys.info(`Source: ${source}, Bypass recaptcha: ${bypassRecaptcha} - ${secret}`);
+	
+	return secret;
+};
 
 module.exports = {
-	getSiteKey,
+	getSecretKey,
 	decrypt
 };

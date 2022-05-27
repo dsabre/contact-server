@@ -1,11 +1,11 @@
-const axios        = require("axios");
-const chalk        = require('chalk');
-const {loadConfig} = require("./utils");
-const {getSiteKey} = require("./crypto");
+const axios          = require("axios");
+const chalk          = require('chalk');
+const {loadConfig}   = require("./utils");
+const {getSecretKey} = require("./crypto");
 
 loadConfig();
 
-const secretKey = getSiteKey('Example', true);
+const secretKey = getSecretKey('Example', true);
 const title     = 'Message from "yarn example"';
 const message   = 'Hello!!';
 const extraData = {
