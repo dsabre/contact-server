@@ -18,7 +18,7 @@ console.log(chalk.cyan('\nConfiguration file generation\n'));
 
 inquirer
 .prompt([
-	{name: 'PORT', type: 'number', message: 'Local port for run locally (for development purposes):', default: process.env.PORT || 3000, validate: requiredInteger},
+	{name: 'PORT', type: 'number', message: 'Port where the program will listen:', default: process.env.PORT || 3000, validate: requiredInteger},
 	{name: 'BOT_TOKEN', type: 'input', message: 'Telegram bot token:', validate: requiredString, default: process.env.BOT_TOKEN || null},
 	{name: 'CHAT_ID', type: 'input', message: 'Telegram chat id where receive messages:', validate: requiredString, default: process.env.CHAT_ID || null},
 	{name: 'useCors', type: 'confirm', message: 'Use cors origin of calls (if no, all sites will be accepted):', default: (typeof process.env.CORS_ORIGIN !== 'undefined' ? process.env.CORS_ORIGIN : 'dummy') !== ''},
