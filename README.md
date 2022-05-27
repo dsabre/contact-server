@@ -2,6 +2,8 @@
 
 Self-hosted contact server for receiving telegram messages. Install it, configure it, create a secret key and start receiving messages.
 
+Most used case when you have a site with a contact form and want receive messages in telegram.
+
 
 ## Badges
 
