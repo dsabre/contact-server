@@ -1,12 +1,13 @@
 # Contact server
 
-Contact server made in Expressjs to manage contact forms.
+Self-hosted contact server for receiving telegram messages. Install it, configure it, create a secret key and start receiving messages.
 
 
 ## Badges
 
 ![Version](https://img.shields.io/github/package-json/v/dsabre/contact-server?style=for-the-badge)
 ![License](https://img.shields.io/github/license/dsabre/contact-server?style=for-the-badge)
+![Issues](https://img.shields.io/github/issues/dsabre/contact-server?style=for-the-badge)
 
 
 ## Run Locally
