@@ -5,10 +5,8 @@ Contact server made in Expressjs to manage contact forms.
 
 ## Badges
 
-Add badges from somewhere like: [shields.io](https://shields.io/)
-
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
-[![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](#)
+![Version](https://img.shields.io/github/package-json/v/dsabre/contact-server?style=for-the-badge)
+![License](https://img.shields.io/github/license/dsabre/contact-server?style=for-the-badge)
 
 
 ## Run Locally
