@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "Daniele Sabre",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
     "axios": "^0.24.0",
     "body-parser": "^1.19.0",
