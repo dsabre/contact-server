@@ -54,7 +54,7 @@ You can use `yarn set-config` command to interactively create a configuration fi
 Example of .env.local file:
 
 ```dotenv
-# Local port for run locally (for development purposes)
+# Port where the program will listen
 PORT=...
 
 # Telegram bot token
