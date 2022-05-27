@@ -2,7 +2,6 @@ const chalk           = require('chalk');
 const crypto          = require('crypto');
 const fs              = require('fs');
 const inquirer        = require('inquirer');
-const {execSync}      = require("child_process");
 const configKeys      = ['PORT', 'BOT_TOKEN', 'CHAT_ID', 'CORS_ORIGIN', 'CRYPTO_SECRET', 'RECAPTCHA_SECRET', 'LOG_ENABLED'];
 const requiredString  = answer => answer.trim() !== '';
 const requiredInteger = answer => /^\d+$/.test(answer);
@@ -35,7 +34,7 @@ inquirer
 	fs.writeFileSync(envFile, config.join('\n'));
 	
 	console.log(chalk.green(`\nCreated ${envFile} configuration file:`));
-	console.log(Buffer.from(execSync(`cat ${envFile}`)).toString());
+	console.log(fs.readFileSync(envFile).toString());
 	console.log();
 })
 .catch(error => {
