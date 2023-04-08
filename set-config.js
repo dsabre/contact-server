@@ -20,7 +20,7 @@ inquirer
 .prompt([
 	{name: 'PORT', type: 'number', message: 'Port where the program will listen:', default: process.env.PORT || 3000, validate: requiredInteger},
 	{name: 'BOT_TOKEN', type: 'input', message: 'Telegram bot token:', validate: requiredString, default: process.env.BOT_TOKEN || null},
-	{name: 'CHAT_ID', type: 'input', message: 'Telegram chat id where receive messages:', validate: requiredString, default: process.env.CHAT_ID || null},
+	{name: 'CHAT_ID', type: 'input', message: 'Telegram chat id where receive messages (if you not know this use "yarn get-chat-ids" before):', validate: requiredString, default: process.env.CHAT_ID || null},
 	{name: 'useCors', type: 'confirm', message: 'Use cors origin of calls (if no, all sites will be accepted):', default: (typeof process.env.CORS_ORIGIN !== 'undefined' ? process.env.CORS_ORIGIN : 'dummy') !== ''},
 	{name: 'CORS_ORIGIN', type: 'input', message: 'Cors origins of calls (if you have multiple values, separate them with commas):', when: answers => answers.useCors, validate: requiredString, default: process.env.CORS_ORIGIN || null},
 	{name: 'CRYPTO_SECRET', type: 'input', message: 'Secret for keys encryption:', validate: requiredString, default: process.env.CRYPTO_SECRET},

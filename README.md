@@ -44,7 +44,6 @@ Start production server
 yarn start
 ```
 
-
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your host server (inside a .env.local file in project root).
@@ -75,9 +74,10 @@ RECAPTCHA_SECRET=...
 # enable or disable logging
 LOG_ENABLED="true|false"
 ```
+
 ## API Reference
 
-#### Set Telegram message
+### Set Telegram message
 
 ```http
   POST /send-message
@@ -86,11 +86,10 @@ LOG_ENABLED="true|false"
 | Parameter         | Type     | Description                                                                                     |
 |:------------------| :------- |:------------------------------------------------------------------------------------------------|
 | `message`         | `string` | **Required**. The message to send via telegram                                                  |
-| `secretKey`         | `string` | **Required**. Your encoded secret key                                                             |
+| `secretKey`       | `string` | **Required**. Your encoded secret key                                                           |
 | `grecaptchaToken` | `string` | **Required if RECAPTCHA_SECRET is not empty**. Token returned from a Google reCAPTCHA challenge |
 | `title`           | `string` | The contact request title, if not provided will be used "CONTACT REQUEST!"                      |
 | `extraData`       | `object` | Any extra data you want to send on Telegram message                                             |
-
 
 ## Usage/Examples
 
@@ -123,22 +122,27 @@ axios.post(sendMessageUrl, {
 });
 ```
 
+### To know the chat id
+
+Before to launch this, write a sample message to the bot.
+
+```bash
+yarn get-chat-ids
+```
+
 ### Generate a new secret key
 
 ```bash
 yarn get-secret-key
 ```
 
-
 ## Screenshots
 
 ![App Screenshot](/screenshots/telegram_example.png "Example telegram message received")
 
-
 ## Authors
 
 - [Daniele Sabre](https://dsabre.github.io/resume/)
-
 
 ## 🔗 Links
 
@@ -147,7 +151,6 @@ yarn get-secret-key
 [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/raniel86)
 [![github](https://img.shields.io/badge/github-171515?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dsabre)
 [![npm](https://img.shields.io/badge/npm-cb0000?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/~dsabre)
-
 
 ## Support me
 

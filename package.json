@@ -9,6 +9,7 @@
     "dev": "node .",
     "get-secret-key": "node get-secret-key.js",
     "set-config": "node set-config.js",
+    "get-chat-ids": "node get-chat-ids.js",
     "example": "node example.js"
   },
   "keywords": [],
