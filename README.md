@@ -6,7 +6,7 @@ Most used case when you have a site with a contact form and want receive message
 
 ## Badges
 
-![Version](https://img.shields.io/github/package-json/v/dsabre/contact-server?style=for-the-badge)
+![Version](https://img.shields.io/github/package-json/v/dsabre/contact-server/main?style=for-the-badge&label=version)
 ![License](https://img.shields.io/github/license/dsabre/contact-server?style=for-the-badge)
 ![Issues](https://img.shields.io/github/issues/dsabre/contact-server?style=for-the-badge)
 
