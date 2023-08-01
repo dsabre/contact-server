@@ -95,7 +95,7 @@ app.post('/send-message', cors(corsOptionsDelegate), jsonParser, async (req, res
 		}
 		
 		// manage extra data
-		if (!!extraData) {
+		if (extraData) {
 			const extraDataKeys = Object.keys(extraData);
 			
 			if (extraDataKeys.length > 0) {

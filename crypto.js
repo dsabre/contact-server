@@ -21,9 +21,9 @@ const encrypt = (text) => {
 const decrypt = hash => {
 	const encryptedData = JSON.parse(Buffer.from(hash, 'base64').toString('binary'));
 	const decipher      = crypto.createDecipheriv(algorithm, secretKey, Buffer.from(encryptedData.iv, 'hex'));
-	const decrpyted     = Buffer.concat([decipher.update(Buffer.from(encryptedData.content, 'hex')), decipher.final()]);
+	const decrypted     = Buffer.concat([decipher.update(Buffer.from(encryptedData.content, 'hex')), decipher.final()]);
 	
-	return decrpyted.toString();
+	return decrypted.toString();
 };
 
 const getSecretKey = (source, bypassRecaptcha) => {

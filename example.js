@@ -9,7 +9,7 @@ const secretKey = getSecretKey('Example', true);
 const title     = 'Message from "yarn example"';
 const message   = 'Hello!!';
 const extraData = {
-	Name:       'Jhon Doe',
+	Name:       'John Doe',
 	Locale:     'en',
 	Site_theme: 'dark' // <-- underscores will be replaced by spaces
 };

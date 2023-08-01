@@ -4,7 +4,7 @@ const isDev = env === 'development';
 
 const loadConfig = () => {
 	// lock if already loaded
-	if (!!process.env.CONFIG_LOADED) {
+	if (process.env.CONFIG_LOADED) {
 		return;
 	}
 	

@@ -4,13 +4,11 @@ Self-hosted contact server for receiving telegram messages. Install it, configur
 
 Most used case when you have a site with a contact form and want receive messages in telegram.
 
-
 ## Badges
 
 ![Version](https://img.shields.io/github/package-json/v/dsabre/contact-server?style=for-the-badge)
 ![License](https://img.shields.io/github/license/dsabre/contact-server?style=for-the-badge)
 ![Issues](https://img.shields.io/github/issues/dsabre/contact-server?style=for-the-badge)
-
 
 ## Run Locally
 
@@ -29,26 +27,26 @@ Go to the project directory
 Install dependencies
 
 ```bash
-yarn install
+pnpm install
 ```
 
 Start development server
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 Start production server
 
 ```bash
-yarn start
+pnpm start
 ```
 
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your host server (inside a .env.local file in project root).
 
-You can use `yarn set-config` command to interactively create a configuration file.
+You can use `pnpm set-config` command to interactively create a configuration file.
 
 Example of .env.local file:
 
@@ -62,10 +60,10 @@ BOT_TOKEN=...
 # Telegram chat id where the bot will send messages
 CHAT_ID=...
 
-# allowed orgin
+# allowed origin
 CORS_ORIGIN=...
 
-# secret passprhase for encode and decode secret keys (see secret key generation section for further details)
+# secret passphrase for encode and decode secret keys (see secret key generation section for further details)
 CRYPTO_SECRET=...
 
 # google recaptcha secret, used for server-side request validation
@@ -77,7 +75,7 @@ LOG_ENABLED="true|false"
 
 ## API Reference
 
-### Set Telegram message
+### Send Telegram message
 
 ```http
   POST /send-message
@@ -104,7 +102,7 @@ const message = 'Hello!!';
 
 // set here any extra data you want to send on Telegram message, here is an example of what I used for my personal site
 const extraData = {
-    Name: 'Jhon Doe',
+    Name: 'John Doe',
     Locale: 'en', 
     Site_theme: 'dark' // <-- underscores will be replaced by spaces
 };
@@ -127,13 +125,13 @@ axios.post(sendMessageUrl, {
 Before to launch this, write a sample message to the bot.
 
 ```bash
-yarn get-chat-ids
+pnpm get-chat-ids
 ```
 
 ### Generate a new secret key
 
 ```bash
-yarn get-secret-key
+pnpm get-secret-key
 ```
 
 ## Screenshots
